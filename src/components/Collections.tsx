@@ -5,19 +5,19 @@ import outdoorImage from "@/assets/collection-outdoor.jpg";
 
 const collections = [
   {
-    title: "Bedroom",
+    title: "Interior Fitout",
     image: bedroomImage,
-    description: "Rest in refined comfort",
+    description: "Complete interior transformation solutions",
   },
   {
-    title: "Dining",
+    title: "Custom Furniture",
     image: diningImage,
-    description: "Gather with elegance",
+    description: "Bespoke pieces crafted for your space",
   },
   {
-    title: "Outdoor",
+    title: "Premium Finishes",
     image: outdoorImage,
-    description: "Extend your living space",
+    description: "Glass work and elegant installations",
   },
 ];
 
@@ -33,10 +33,10 @@ const Collections = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-            Collections
+            What We Do
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Discover our curated selection of timeless furniture
+            Discover our comprehensive interior design and construction services
           </p>
         </motion.div>
 

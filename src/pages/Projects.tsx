@@ -59,7 +59,7 @@ const Projects = () => {
       : projects.filter((project) => project.category === selectedCategory);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
       <main className="pt-24 pb-16">
@@ -70,7 +70,10 @@ const Projects = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+            <h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-light mb-4 text-gray-400 uppercase tracking-[0.3em]"
+              style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.3em' }}
+            >
               PROJECTS
             </h1>
           </motion.div>
@@ -87,9 +90,10 @@ const Projects = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 text-sm tracking-wider transition-all duration-300 ${
                   selectedCategory === category
-                    ? "text-foreground border-b-2 border-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-black border-b-2 border-black"
+                    : "text-gray-600 hover:text-black"
                 }`}
+                style={{ fontFamily: 'Inter', fontWeight: 500, letterSpacing: '0.05em' }}
               >
                 {category.toUpperCase()}
               </button>
@@ -124,9 +128,19 @@ const Projects = () => {
                     transition={{ duration: 0.3 }}
                     className="absolute inset-0 bg-black/60 flex items-center justify-center"
                   >
-                    <div className="text-center text-primary-foreground">
-                      <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                      <p className="text-sm tracking-wider">{project.category}</p>
+                    <div className="text-center text-white">
+                      <h3 
+                        className="text-2xl font-medium mb-2"
+                        style={{ fontFamily: 'Inter', fontWeight: 500 }}
+                      >
+                        {project.title}
+                      </h3>
+                      <p 
+                        className="text-sm tracking-wider"
+                        style={{ fontFamily: 'Inter', fontWeight: 400, letterSpacing: '0.05em' }}
+                      >
+                        {project.category}
+                      </p>
                     </div>
                   </motion.div>
                 </div>

@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-24 px-6 bg-card">
+    <section id="contact" className="py-24 px-6 bg-white">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -13,10 +13,16 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-            Get in Touch
+          <h2 
+            className="text-4xl md:text-5xl lg:text-6xl font-light mb-4 text-gray-400 uppercase tracking-[0.3em]"
+            style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.3em' }}
+          >
+            CONTACT
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p 
+            className="text-gray-600 text-base leading-relaxed"
+            style={{ fontFamily: 'Inter', fontWeight: 400, lineHeight: '1.7' }}
+          >
             Ready to transform your space?
           </p>
         </motion.div>
@@ -29,11 +35,21 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0 }}
             className="text-center"
           >
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Mail className="w-8 h-8" />
+            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Mail className="w-8 h-8 text-black" />
             </div>
-            <h3 className="font-bold mb-2">Email</h3>
-            <p className="text-muted-foreground">hello@homade.com</p>
+            <h3 
+              className="font-medium mb-2 text-black"
+              style={{ fontFamily: 'Inter', fontWeight: 500 }}
+            >
+              Email
+            </h3>
+            <p 
+              className="text-gray-600"
+              style={{ fontFamily: 'Inter', fontWeight: 400 }}
+            >
+              hello@homade.com
+            </p>
           </motion.div>
 
           <motion.div
@@ -43,11 +59,21 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-center"
           >
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Phone className="w-8 h-8" />
+            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Phone className="w-8 h-8 text-black" />
             </div>
-            <h3 className="font-bold mb-2">Phone</h3>
-            <p className="text-muted-foreground">+1 (555) 123-4567</p>
+            <h3 
+              className="font-medium mb-2 text-black"
+              style={{ fontFamily: 'Inter', fontWeight: 500 }}
+            >
+              Phone
+            </h3>
+            <p 
+              className="text-gray-600"
+              style={{ fontFamily: 'Inter', fontWeight: 400 }}
+            >
+              +971 (4) 362-6821
+            </p>
           </motion.div>
 
           <motion.div
@@ -57,11 +83,21 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-center"
           >
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <MapPin className="w-8 h-8" />
+            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <MapPin className="w-8 h-8 text-black" />
             </div>
-            <h3 className="font-bold mb-2">Visit Us</h3>
-            <p className="text-muted-foreground">123 Design Street</p>
+            <h3 
+              className="font-medium mb-2 text-black"
+              style={{ fontFamily: 'Inter', fontWeight: 500 }}
+            >
+              Visit Us
+            </h3>
+            <p 
+              className="text-gray-600"
+              style={{ fontFamily: 'Inter', fontWeight: 400 }}
+            >
+              Dubai, UAE
+            </p>
           </motion.div>
         </div>
 
@@ -72,8 +108,8 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.45 }}
           className="text-center"
         >
-          <Button size="lg" asChild>
-            <a href="mailto:hello@homade.com">Send Message</a>
+          <Button size="lg" className="bg-black text-white hover:bg-gray-800" asChild>
+            <a href="/contact">Contact Us</a>
           </Button>
         </motion.div>
       </div>

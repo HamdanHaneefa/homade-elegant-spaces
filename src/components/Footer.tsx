@@ -1,26 +1,119 @@
+import { motion } from "framer-motion";
+import { Facebook, Instagram } from "lucide-react";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="py-12 px-6 bg-primary text-primary-foreground">
+    <footer className="py-12 px-6 bg-black text-white">
       <div className="container mx-auto">
         <div className="text-center">
-          <h3 className="text-2xl font-bold tracking-wider mb-4">HOMADE</h3>
-          <p className="text-primary-foreground/80 mb-8">
+          <motion.h3 
+            className="text-2xl font-light tracking-[0.2em] mb-4"
+            style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.2em' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            HOMADE
+          </motion.h3>
+          
+          <motion.p 
+            className="text-gray-400 mb-8 font-light"
+            style={{ fontFamily: 'Inter', fontWeight: 300 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Crafting spaces that feel like home
-          </p>
-          <div className="flex justify-center gap-8 mb-8">
-            <a href="#collections" className="hover:text-primary-foreground/70 transition-colors">
-              Collections
-            </a>
-            <a href="#about" className="hover:text-primary-foreground/70 transition-colors">
+          </motion.p>
+          
+          {/* Navigation Links */}
+          <motion.div 
+            className="flex justify-center gap-8 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Link 
+              to="/projects" 
+              className="hover:text-gray-300 transition-colors font-light tracking-wide"
+              style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.05em' }}
+            >
+              Projects
+            </Link>
+            <Link 
+              to="/services" 
+              className="hover:text-gray-300 transition-colors font-light tracking-wide"
+              style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.05em' }}
+            >
+              Services
+            </Link>
+            <Link 
+              to="/about" 
+              className="hover:text-gray-300 transition-colors font-light tracking-wide"
+              style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.05em' }}
+            >
               About
-            </a>
-            <a href="#contact" className="hover:text-primary-foreground/70 transition-colors">
+            </Link>
+            <Link 
+              to="/contact" 
+              className="hover:text-gray-300 transition-colors font-light tracking-wide"
+              style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.05em' }}
+            >
               Contact
-            </a>
-          </div>
-          <p className="text-sm text-primary-foreground/60">
+            </Link>
+          </motion.div>
+
+          {/* Social Media Icons */}
+          <motion.div 
+            className="flex justify-center gap-6 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <motion.a
+              href="https://www.instagram.com/homade.concept?igsh=MXB2NGdkdDAzc2wxNw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full border border-gray-600 hover:border-white hover:bg-white hover:text-black transition-all duration-300"
+              whileHover={{ 
+                scale: 1.1,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Instagram className="w-5 h-5" />
+            </motion.a>
+            
+            <motion.a
+              href="#" // Add Facebook link when available
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full border border-gray-600 hover:border-white hover:bg-white hover:text-black transition-all duration-300"
+              whileHover={{ 
+                scale: 1.1,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Facebook className="w-5 h-5" />
+            </motion.a>
+          </motion.div>
+          
+          <motion.p 
+            className="text-sm text-gray-500 font-light"
+            style={{ fontFamily: 'Inter', fontWeight: 300 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             © 2025 Homade. All rights reserved.
-          </p>
+          </motion.p>
         </div>
       </div>
     </footer>
