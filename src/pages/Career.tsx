@@ -1,14 +1,35 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 
 const Career = () => {
   const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    resumeFile: null as File | null,
+    message: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'resume' | 'portfolio') => {
+    const file = e.target.files?.[0] || null;
+    setFormData(prev => ({
+      ...prev,
+      [type === 'resume' ? 'resumeFile' : 'portfolioFile']: file
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -16,139 +37,204 @@ const Career = () => {
       title: "Application Submitted!",
       description: "Thank you for your interest. We'll be in touch soon.",
     });
+    console.log('Form submitted:', formData);
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
-      <main className="pt-24 pb-16">
-        <div className="container mx-auto px-6 max-w-4xl">
+      <section className="pt-32 pb-24 px-6">
+        <div className="container mx-auto max-w-4xl">
+          {/* Header Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+            <h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-light mb-4 text-gray-400 uppercase tracking-[0.3em]"
+              style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.3em' }}
+            >
               CAREER
             </h1>
-            <h2 className="text-2xl md:text-3xl font-light mb-6 text-muted-foreground tracking-wide">
-              JOIN THE HOMADE FAMILY!
-            </h2>
-            <div className="space-y-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-              <p>
-                We are building a team of passionate, curious, mission-focused people
-                who are always seeking new challenges.
-              </p>
-              <p>
-                Working with Homade is based on creative thinking, teamwork, and
-                continuous growth. A place where you can fulfil your big dreams!
-              </p>
-            </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-12"
+            >
+              <h2 
+                className="text-2xl font-light text-black mb-6 tracking-[0.2em]"
+                style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.2em' }}
+              >
+                JOIN THE HOMADE FAMILY!
+              </h2>
+              
+              <div className="max-w-3xl mx-auto space-y-4">
+                <p 
+                  className="text-gray-600 text-base leading-relaxed"
+                  style={{ fontFamily: 'Inter', fontWeight: 300, lineHeight: '1.8' }}
+                >
+                  We are building a team of passionate, curious, mission-focused people who are always seeking for new challenges.
+                </p>
+                <p 
+                  className="text-gray-600 text-base leading-relaxed"
+                  style={{ fontFamily: 'Inter', fontWeight: 300, lineHeight: '1.8' }}
+                >
+                  Working with Homade is based on creative thinking, teamwork, and continuous growth. A place where you can fulfil your big dreams!
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
 
-          <motion.form
-            initial={{ opacity: 0, y: 20 }}
+          {/* Application Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            onSubmit={handleSubmit}
-            className="space-y-6"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="bg-white border border-slate-200 p-8 md:p-12"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label htmlFor="firstName">First Name *</Label>
-                <Input id="firstName" required placeholder="First Name" />
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Name Fields */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label 
+                    className="block text-sm font-normal text-slate-700 mb-2"
+                    style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                  >
+                    First Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
+                    placeholder="First Name"
+                    required
+                    className="w-full px-4 py-3 border border-slate-300 focus:outline-none focus:border-slate-500 transition-colors"
+                    style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                  />
+                </div>
+                
+                <div>
+                  <label 
+                    className="block text-sm font-normal text-slate-700 mb-2"
+                    style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                  >
+                    Last Name <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    placeholder="Last Name"
+                    required
+                    className="w-full px-4 py-3 border border-slate-300 focus:outline-none focus:border-slate-500 transition-colors"
+                    style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                  />
+                </div>
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="lastName">Last Name *</Label>
-                <Input id="lastName" required placeholder="Last Name" />
-              </div>
-            </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
-              <Input id="email" type="email" required placeholder="Email address" />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="phone">Phone *</Label>
-              <Input id="phone" type="tel" required placeholder="Phone number" />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="address">Address</Label>
-              <Input id="address" placeholder="Address" />
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="city">City</Label>
-              <Input id="city" placeholder="City" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label htmlFor="resume">Resume</Label>
-                <Input id="resume" type="file" accept=".pdf,.doc,.docx" />
-                <p className="text-xs text-muted-foreground">
-                  Please attach your resume for review
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="resumeLink">Resume Link</Label>
-                <Input
-                  id="resumeLink"
-                  type="url"
-                  placeholder="https://"
+              {/* Email */}
+              <div>
+                <label 
+                  className="block text-sm font-normal text-slate-700 mb-2"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                >
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email address"
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 focus:outline-none focus:border-slate-500 transition-colors"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
                 />
-                <p className="text-xs text-muted-foreground">
-                  Alternatively, insert a link to your resume
-                </p>
               </div>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label htmlFor="portfolio">Portfolio</Label>
-                <Input id="portfolio" type="file" accept=".pdf,.doc,.docx" />
-                <p className="text-xs text-muted-foreground">
-                  If available, please attach your portfolio
-                </p>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="portfolioLink">Portfolio Link</Label>
-                <Input
-                  id="portfolioLink"
-                  type="url"
-                  placeholder="https://"
+              {/* Phone */}
+              <div>
+                <label 
+                  className="block text-sm font-normal text-slate-700 mb-2"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                >
+                  Phone <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Phone number"
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 focus:outline-none focus:border-slate-500 transition-colors"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
                 />
-                <p className="text-xs text-muted-foreground">
-                  Alternatively, insert a link to your portfolio
-                </p>
               </div>
-            </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="message">Why Homade?</Label>
-              <Textarea
-                id="message"
-                placeholder="Tell us why you want to join Homade..."
-                rows={5}
-              />
-            </div>
+              {/* Resume */}
+              <div>
+                <label 
+                  className="block text-sm font-normal text-slate-700 mb-2"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                >
+                  Resume <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="file"
+                  onChange={(e) => handleFileChange(e, 'resume')}
+                  accept=".pdf,.doc,.docx"
+                  required
+                  className="w-full px-4 py-3 border border-slate-300 focus:outline-none focus:border-slate-500 transition-colors file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                />
+              </div>
 
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="pt-4"
-            >
-              <Button type="submit" size="lg" className="w-full">
-                Submit Application
-              </Button>
-            </motion.div>
-          </motion.form>
+              {/* Message */}
+              <div>
+                <label 
+                  className="block text-sm font-normal text-slate-700 mb-2"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                >
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Brief message about your interest..."
+                  rows={3}
+                  className="w-full px-4 py-3 border border-slate-300 focus:outline-none focus:border-slate-500 transition-colors resize-vertical"
+                  style={{ fontFamily: 'Inter', fontWeight: 400 }}
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div className="flex justify-center pt-6">
+                <motion.button
+                  type="submit"
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-16 py-4 bg-slate-800 text-white font-light tracking-[0.1em] hover:bg-slate-900 transition-all duration-300 border border-slate-800 hover:border-slate-900"
+                  style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.1em' }}
+                >
+                  SUBMIT
+                </motion.button>
+              </div>
+            </form>
+          </motion.div>
         </div>
-      </main>
+      </section>
 
       <Footer />
     </div>

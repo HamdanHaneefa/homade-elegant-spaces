@@ -1,32 +1,39 @@
 import { motion } from "framer-motion";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
+import logoImage from "@/assets/Logo.png";
 
 const Footer = () => {
   return (
     <footer className="py-12 px-6 bg-black text-white">
       <div className="container mx-auto">
         <div className="text-center">
-          <motion.h3 
-            className="text-2xl font-light tracking-[0.2em] mb-4"
-            style={{ fontFamily: 'Inter', fontWeight: 300, letterSpacing: '0.2em' }}
+          <motion.div 
+            className="flex justify-center mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            HOMADE
-          </motion.h3>
+            <Link to="/">
+              <img 
+                src={logoImage} 
+                alt="Homade Logo" 
+                className="h-10 w-auto filter brightness-0 invert"
+              />
+            </Link>
+          </motion.div>
           
           <motion.p 
-            className="text-gray-400 mb-8 font-light"
-            style={{ fontFamily: 'Inter', fontWeight: 300 }}
+            className="text-gray-400 mb-8 font-light text-sm leading-relaxed"
+            style={{ fontFamily: 'Inter', fontWeight: 300, lineHeight: '1.6' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Crafting spaces that feel like home
+            Premium Interior Design & Architecture Solutions in Dubai<br />
+            Transforming spaces with precision and passion
           </motion.p>
           
           {/* Navigation Links */}
@@ -87,6 +94,20 @@ const Footer = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Instagram className="w-5 h-5" />
+            </motion.a>
+            
+            <motion.a
+              href="#" // Add LinkedIn link when available
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-full border border-gray-600 hover:border-white hover:bg-white hover:text-black transition-all duration-300"
+              whileHover={{ 
+                scale: 1.1,
+                transition: { duration: 0.2 }
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Linkedin className="w-5 h-5" />
             </motion.a>
             
             <motion.a

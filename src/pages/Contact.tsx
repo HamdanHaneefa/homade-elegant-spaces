@@ -56,7 +56,7 @@ const ContactPage = () => {
             </h1>
             <p 
               className="text-gray-600 text-base max-w-2xl mx-auto leading-relaxed"
-              style={{ fontFamily: 'Inter', fontWeight: 400, lineHeight: '1.7' }}
+              style={{ fontFamily: 'Inter', fontWeight: 300, lineHeight: '1.7' }}
             >
               Ready to transform your space? Contact us today for a consultation.
             </p>
