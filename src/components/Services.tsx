@@ -89,13 +89,12 @@ const Services = () => {
           </h3>
           
           {/* Desktop Layout - 3 Columns */}
-          <div className="hidden md:grid grid-cols-3 gap-x-8 gap-y-6 max-w-5xl mx-auto">
+          <div className="hidden md:grid grid-cols-3 gap-x-4 gap-y-4 max-w-5xl mx-auto">
             {[
               "Planning",
               "Architecture", 
               "Interior Design",
               "Landscape",
-              "MEP Design",
               "Site Styling"
             ].map((item, index) => (
               <motion.div
@@ -127,8 +126,6 @@ const Services = () => {
               "Interior Design",
               "Landscape",
               "Exhibitions",
-              "MEP Design",
-              "Structural Design",
               "Site Styling"
             ].map((item, index) => (
               <motion.div

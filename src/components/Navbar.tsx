@@ -46,9 +46,9 @@ const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md shadow-lg"
         style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}
       >
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 md:px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center z-[60]">
+            <Link to="/" className="flex items-center z-[60] -ml-4 md:ml-0">
               <img 
                 src={logoImage} 
                 alt="Homade Logo" 
@@ -88,14 +88,14 @@ const Navbar = () => {
             {/* Mobile Navigation Toggle */}
             <Button 
               variant="ghost" 
-              size="icon" 
-              className="md:hidden text-gray-900 hover:bg-gray-100 z-[60]"
+              size="lg" 
+              className="md:hidden text-gray-900 hover:bg-gray-100 z-[60] p-3"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-7 w-7" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-7 w-7" />
               )}
             </Button>
           </div>
@@ -126,7 +126,7 @@ const Navbar = () => {
             >
               {/* Header with Logo and Close Button */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
+                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="-ml-3">
                   <img 
                     src={logoImage} 
                     alt="Homade Logo" 
