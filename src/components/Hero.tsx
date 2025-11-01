@@ -102,7 +102,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="mb-16"
+            className="mb-8"
           >
             <img 
               src={logoImage} 
@@ -116,10 +116,10 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="mb-12"
+            className="mb-8"
           >
             <h1 
-              className="text-base md:text-lg lg:text-xl xl:text-2xl font-medium text-white/80 mb-6 leading-tight tracking-wide"
+              className="text-base md:text-lg lg:text-xl xl:text-2xl font-medium text-white/80 mb-4 leading-tight tracking-wide"
               style={{ 
                 fontFamily: 'Inter', 
                 fontWeight: 500, 
@@ -131,7 +131,7 @@ const Hero = () => {
             </h1>
             
             <motion.p 
-              className="text-xs md:text-sm lg:text-base text-white/70 mb-10 font-normal tracking-wide max-w-3xl mx-auto"
+              className="text-xs md:text-sm lg:text-base text-white/70 mb-8 font-normal tracking-wide max-w-3xl mx-auto"
               style={{ 
                 fontFamily: 'Inter', 
                 fontWeight: 400, 
