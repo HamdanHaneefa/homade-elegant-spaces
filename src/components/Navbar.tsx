@@ -46,13 +46,13 @@ const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md shadow-lg"
         style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}
       >
-        <div className="container mx-auto px-4 md:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link to="/" className="flex items-center z-[60] -ml-4 md:ml-0">
+        <div className="container mx-auto px-4 md:px-6 py-3">
+          <div className="flex items-center justify-between h-14 md:h-12">
+            <Link to="/" className="flex items-start pt-0 pb-2 z-[60] -ml-14 md:-ml-2 md:items-center md:pt-0 md:pb-0">
               <img 
                 src={logoImage} 
                 alt="Homade Logo" 
-                className="h-10 w-auto"
+                className="h-12 md:h-10 w-auto"
               />
             </Link>
 
@@ -86,18 +86,16 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Navigation Toggle */}
-            <Button 
-              variant="ghost" 
-              size="lg" 
-              className="md:hidden text-gray-900 hover:bg-gray-100 z-[60] p-3"
+            <div 
+              className="md:hidden z-[60] cursor-pointer p-2 hover:bg-transparent rounded-md transition-colors flex items-end justify-center pb-1"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
-                <X className="h-7 w-7" />
+                <X className="h-7 w-7 text-gray-900" />
               ) : (
-                <Menu className="h-7 w-7" />
+                <Menu className="h-7 w-7 text-gray-900" />
               )}
-            </Button>
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -126,7 +124,7 @@ const Navbar = () => {
             >
               {/* Header with Logo and Close Button */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="-ml-3">
+                <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="-ml-4">
                   <img 
                     src={logoImage} 
                     alt="Homade Logo" 

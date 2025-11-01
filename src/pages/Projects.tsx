@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
-import project5 from "@/assets/project-5.jpg";
-import project6 from "@/assets/project-6.jpg";
+import kitchenImg from "@/assets/kitchen.jpg";
+import bedroomImg from "@/assets/bedroom.jpg";
+import officeImg from "@/assets/office.jpg";
+import diningImg from "@/assets/dining.jpg";
+import bathroomImg from "@/assets/bathroom.jpg";
 
 const projects = [
   {
@@ -20,31 +20,31 @@ const projects = [
     id: 2,
     title: "Contemporary Kitchen",
     category: "Residential",
-    image: project2,
+    image: kitchenImg,
   },
   {
     id: 3,
     title: "Luxury Bedroom Suite",
     category: "Residential",
-    image: project3,
+    image: bedroomImg,
   },
   {
     id: 4,
     title: "Executive Office",
     category: "Commercial",
-    image: project4,
+    image: officeImg,
   },
   {
     id: 5,
     title: "Elegant Dining Room",
     category: "Mixed-Use",
-    image: project5,
+    image: diningImg,
   },
   {
     id: 6,
     title: "Spa Bathroom",
     category: "Residential",
-    image: project6,
+    image: bathroomImg,
   },
 ];
 

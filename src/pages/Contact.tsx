@@ -96,7 +96,7 @@ const ContactPage = () => {
     e.preventDefault();
     
     // Create WhatsApp message template
-    const whatsappNumber = "971507544450"; // Homade's WhatsApp number
+    const whatsappNumber = "971569677882"; // Homade's WhatsApp number
     const message = `Hello Homade Team,
 
 I would like to inquire about your services.

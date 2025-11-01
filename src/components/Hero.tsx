@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
 import logoImage from "@/assets/Logo.png";
 import bannerVideo from "@/assets/banner_video.mp4";
 
@@ -14,25 +15,80 @@ const textContent: TextContent[] = [
   {
     id: 1,
     title: "CRAFTING EXTRAORDINARY INTERIOR DESIGNS?",
-    subtitle: "EVERY DETAIL WILL BE DESIGNED AROUND WHAT MATTERS MOST TO YOU"
+    subtitle: "Every detail will be designed around what matters most to you"
   }
 ];
 
 const Hero = () => {
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Preload video
+      video.preload = "metadata";
+      
+      const handleLoadedData = () => {
+        setVideoLoaded(true);
+      };
+
+      const handleError = () => {
+        setVideoError(true);
+        setVideoLoaded(true); // Show fallback
+      };
+
+      video.addEventListener('loadeddata', handleLoadedData);
+      video.addEventListener('error', handleError);
+
+      return () => {
+        video.removeEventListener('loadeddata', handleLoadedData);
+        video.removeEventListener('error', handleError);
+      };
+    }
+  }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
+          {/* Video Loading Skeleton */}
+          {!videoLoaded && (
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 animate-pulse">
+            </div>
+          )}
+          
+          {/* Fallback Background for Video Error */}
+          {videoError && (
+            <div 
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ 
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('/src/assets/hero-living.jpg')`,
+                filter: 'brightness(0.5) contrast(1.0)' 
+              }}
+            />
+          )}
+
+          {/* Video Element */}
           <video
+            ref={videoRef}
             src={bannerVideo}
             autoPlay
             loop
             muted
             playsInline
-            className="w-full h-full object-cover"
+            preload="metadata"
+            className={`w-full h-full object-cover transition-opacity duration-500 ${
+              videoLoaded && !videoError ? 'opacity-100' : 'opacity-0'
+            }`}
             style={{ filter: 'brightness(0.5) contrast(1.0)' }}
+            onLoadedData={() => setVideoLoaded(true)}
+            onError={() => {
+              setVideoError(true);
+              setVideoLoaded(true);
+            }}
           />
         </div>
         <div className="absolute inset-0 bg-black/30" />
@@ -63,7 +119,7 @@ const Hero = () => {
             className="mb-12"
           >
             <h1 
-              className="text-base md:text-lg lg:text-xl xl:text-2xl font-medium text-white/80 mb-6 leading-tight tracking-wide uppercase"
+              className="text-base md:text-lg lg:text-xl xl:text-2xl font-medium text-white/80 mb-6 leading-tight tracking-wide"
               style={{ 
                 fontFamily: 'Inter', 
                 fontWeight: 500, 
@@ -75,7 +131,7 @@ const Hero = () => {
             </h1>
             
             <motion.p 
-              className="text-xs md:text-sm lg:text-base text-white/70 mb-10 font-normal tracking-wide uppercase max-w-3xl mx-auto"
+              className="text-xs md:text-sm lg:text-base text-white/70 mb-10 font-normal tracking-wide max-w-3xl mx-auto"
               style={{ 
                 fontFamily: 'Inter', 
                 fontWeight: 400, 
@@ -97,8 +153,8 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.1 }}
           >
             <Button 
-              size="lg" 
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 text-sm font-medium tracking-[0.15em] uppercase transition-all duration-300 rounded-full"
+              size="sm" 
+              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-slate-900 px-6 py-3 text-xs font-medium tracking-[0.15em] uppercase transition-all duration-300 rounded-full"
               style={{ 
                 fontFamily: 'Inter', 
                 fontWeight: 500, 
