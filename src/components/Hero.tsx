@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import logoImage from "@/assets/Logo.png";
-import heroBanner from "@/assets/hero_banner.jpg";
+import bannerVideo from "@/assets/banner_video.mp4";
 
 interface TextContent {
   id: number;
@@ -22,12 +22,15 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
-          <img
-            src={heroBanner}
-            alt="Homade Interior Design"
+          <video
+            src={bannerVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
             style={{ filter: 'brightness(0.5) contrast(1.0)' }}
           />
@@ -60,10 +63,10 @@ const Hero = () => {
             className="mb-12"
           >
             <h1 
-              className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-white mb-6 leading-tight tracking-wide uppercase"
+              className="text-base md:text-lg lg:text-xl xl:text-2xl font-medium text-white/80 mb-6 leading-tight tracking-wide uppercase"
               style={{ 
                 fontFamily: 'Inter', 
-                fontWeight: 600, 
+                fontWeight: 500, 
                 lineHeight: '1.3',
                 letterSpacing: '0.02em'
               }}
@@ -72,7 +75,7 @@ const Hero = () => {
             </h1>
             
             <motion.p 
-              className="text-sm md:text-base lg:text-lg text-white/90 mb-10 font-normal tracking-wide uppercase max-w-3xl mx-auto"
+              className="text-xs md:text-sm lg:text-base text-white/70 mb-10 font-normal tracking-wide uppercase max-w-3xl mx-auto"
               style={{ 
                 fontFamily: 'Inter', 
                 fontWeight: 400, 
