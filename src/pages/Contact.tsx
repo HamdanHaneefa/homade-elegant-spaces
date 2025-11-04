@@ -190,8 +190,8 @@ ${formData.name}`;
                       
                       <div className="flex items-center space-x-3">
                         <Mail className="w-5 h-5 text-gray-600" />
-                        <a href="mailto:info@dantonehome.com" className="text-black hover:text-gray-600 transition-colors">
-                          info@homade.com
+                        <a href="mailto:homadeinterior@gmail.com" className="text-black hover:text-gray-600 transition-colors">
+                          homadeinterior@gmail.com
                         </a>
                       </div>
                     </div>
